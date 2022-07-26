@@ -9,12 +9,16 @@ import requests
 import json
 import pickle
 import pymysql
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 db_settings = {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "super",
-    "password": "0104",
+    "host": os.getenv("dbip"),
+    "port": int(os.getenv("dbport")),
+    "user": os.getenv("dbuser"),
+    "password": os.getenv("dbpassword"),
     "charset": "utf8"
 }
 conn = pymysql.connect(**db_settings)
